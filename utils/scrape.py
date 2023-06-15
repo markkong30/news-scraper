@@ -7,7 +7,7 @@ from utils.constants import base_url
 def fetch_news(path: str):
     # use requests library to get the page
     full_url = base_url + path
-    response = requests.get(full_url, verify=False)
+    response = requests.get(full_url)
 
     # create BeautifulSoup object
     soup = BeautifulSoup(response.content, "html.parser")
@@ -35,7 +35,3 @@ def fetch_news(path: str):
             pass
 
     return newslist
-
-    # # save the data to a JSON file
-    # with open("news.json", "w") as f:
-    #     json.dump({"data": newslist}, f)
