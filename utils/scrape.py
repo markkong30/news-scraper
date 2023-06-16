@@ -26,9 +26,17 @@ def fetch_news(path: str):
             link = newsitem.a["href"]
             full_link = base_url + link
 
+            description = article.find("p", class_="qa-story-summary")
+            description = description.text.strip()
+
             image = article.find("img", class_="qa-story-image")["src"]
 
-            newsarticle = {"title": title, "link": full_link, "image": image}
+            newsarticle = {
+                "title": title,
+                "description": description,
+                "link": full_link,
+                "image": image,
+            }
             newslist.append(newsarticle)
 
         except:
